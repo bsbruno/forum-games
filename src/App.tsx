@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import React from "react";
+import Routes from "./routes";
+import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import theme from "./styles/theme";
+import { AuthProvider } from "../src/hooks/AuthContext";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <AuthProvider>
+            <Routes />
+          </AuthProvider>
+        </ThemeProvider>
+      </BrowserRouter>
     </div>
   );
 }
